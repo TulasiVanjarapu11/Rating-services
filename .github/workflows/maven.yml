@@ -60,11 +60,13 @@ jobs:
           #disable SSL cert checking. use this if u dont have certificate authority data
           insecure_skip_tls_verify: true
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+
           #apply files
       - name: Deploy
         run: |
           oc apply -f k8s/service.yml
           oc apply -f k8s/config.yml
+          oc apply -f k8s/mysql.yml
           oc apply -f k8s/deployment.yml
           oc rollout status  deployment/rating-service
 

@@ -52,11 +52,11 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>com.microsoft.sqlserver</groupId>-->
-        <!--            <artifactId>mssql-jdbc</artifactId>-->
-        <!--            <scope>runtime</scope>-->
-        <!--        </dependency>-->
+                <dependency>
+                    <groupId>com.microsoft.sqlserver</groupId>
+                    <artifactId>mssql-jdbc</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -92,6 +92,16 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <image>
+                        <name>docker.io/TulasiVanjarapu11/${project.artifactId}:${project.version}</name>
+                        <publish>true</publish>
+                    </image>
+                    <docker>
+                        <publishRegistry>
+                            <username>${env.DOCKERHUB_USER}</username>
+                            <password>${env.DOCKERHUB_PWD}</password>
+                        </publishRegistry>
+                    </docker>
                 </configuration>
             </plugin>
         </plugins>
